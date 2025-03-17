@@ -2,7 +2,7 @@
 A **Flask web app** where users can **register, log in, add new cafes, view cafes, and bookmark favorites**. Users must log in to **bookmark/unbookmark** cafes. The app features **flash messages for errors** and **database-backed storage** with relationships between **User, Cafe, and Bookmark tables**.  
 
 ## Video Demo
-[![Video Demo](./screenshots/thumbnail.PNG)](https://www.google.com/)
+[![Video Demo](./screenshots/thumbnail.PNG)](https://youtu.be/5hTIotFOrQw)
 
 ## Author
 Pranjal Sarnaik
