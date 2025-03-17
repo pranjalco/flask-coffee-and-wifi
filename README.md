@@ -1,7 +1,7 @@
 # Coffee and Wifi
 A **Flask web app** where users can **register, log in, add new cafes, view cafes, and bookmark favorites**. Users must log in to **bookmark/unbookmark** cafes. The app features **flash messages for errors** and **database-backed storage** with relationships between **User, Cafe, and Bookmark tables**.  
 
-## Video
+## Video Demo
 [![Video Demo](./screenshots/thumbnail.PNG)](https://www.google.com/)
 
 ## Author
