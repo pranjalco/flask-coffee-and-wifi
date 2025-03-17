@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Restaurants{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>{{ current_user.name }}'s Bookmarks</h1>
+        <p>Please see below list of your favourite cafe's</p>
+        <p>Please click 🗑️ to remove cafe from your bookmarks list.</p>
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+        <p class="flash" style="color: green">{{ message }}</p>
+        {% endfor %}
+        {% endwith %}
+
+      {% if all_cafes: %}
+	  <table class="table table-dark table-striped table-hover">
+          <!-- This is where you will write the code to render a Bootstrap
+          Table that contains all the information from the
+          cafe-data.csv file. -->
+<!--          <p>{{cafes}}</p>-->
+
+              <table class="table">
+
+                  <thead>
+                    <tr>
+                        {% for column_name in all_cafes[0].to_dict(): %}
+                        <th scope="col">{{ column_name }}</th>
+                        {% endfor %}
+                    </tr>
+                  </thead>
+
+                  <tbody>
+<!--                  Jinja's loop.index starts from 1 by default.-->
+<!--                  Database id starts from 1-->
+<!--                  Jinja loop.index starts from 1-->
+                  {% for row in all_cafes: %}
+                  {% set row_dict = row.to_dict() %}
+
+                    <tr>
+<!--                      <th scope="row">1</th>-->
+                        <td>{{ row_dict['id'] }}</td>
+                        <td>{{ row_dict['cafe_name'] }}</td>
+                        <td><a href="{{ row_dict['location'] }}" target="_blank">Map Link</a></td>
+                        <td>{{ row_dict['open_time'] }}</td>
+                        <td>{{ row_dict['close_time'] }}</td>
+                        <td>{{ row_dict['coffee'] }}</td>
+                        <td>{{ row_dict['wifi'] }}</td>
+                        <td>{{ row_dict['power'] }}</td>
+                        <td><a href="{{ url_for('delete_bookmark', cafe_id=row_dict['id'] ) }}">🗑️</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+
+  	  </table>
+        {% endif %}
+
+<!--      <p><a href="{{ url_for('home')}}">Return to index page</a></p>-->
+<!--        <p><a href="{{ url_for('add_cafe') }}">add new cafe</a></p>-->
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
